@@ -2336,7 +2336,7 @@ PrefabInstance:
       objectReference: {fileID: 1884508828}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: health
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: defense
@@ -2348,7 +2348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: maxMagika
@@ -2391,6 +2391,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: holdDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1441528134}
@@ -2403,7 +2407,15 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: ballHoldRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: speedDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: ballShootRange
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
@@ -2441,6 +2453,10 @@ PrefabInstance:
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: arcticFreezeCost
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: ballHoldDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: speedAbilityCost
@@ -8890,7 +8906,7 @@ GameObject:
   - component: {fileID: 1884508830}
   - component: {fileID: 1884508829}
   - component: {fileID: 1884508833}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ball
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -8994,7 +9010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884508828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.93, y: 1.65, z: 1.0257657}
+  m_LocalPosition: {x: -14.17, y: 0.27, z: 1.0257657}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9014,7 +9030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballDamage: 5
-  damageSpeedMultiplier: 0
+  damageSpeedMultiplier: 0.3
   ballInitialSpeed: 0
 --- !u!1 &1889836280
 GameObject:

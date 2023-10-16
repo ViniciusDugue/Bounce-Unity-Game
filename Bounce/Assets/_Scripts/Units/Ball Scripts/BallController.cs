@@ -12,14 +12,15 @@ public class BallController : MonoBehaviour
 
     private Rigidbody2D rb;
     private GameObject ball;
-    [SerializeField] private int ballDamage = 10;
-    [SerializeField] private float damageSpeedMultiplier = 1.0f;
+    public int ballDamage = 10;
+    [SerializeField] private float damageSpeedMultiplier;
     [SerializeField] private float ballInitialSpeed = 20f;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         ball = gameObject;
         rb.velocity = new Vector3(-1,-1,0).normalized * ballInitialSpeed;
+        // dynamicCollider= transform.Find("ChildObject");
     }
 
     public void ActivateBall()
@@ -56,18 +57,29 @@ public class BallController : MonoBehaviour
         {
             print("enemy collision!");
             rb.velocity *= 1.0f;
-            collision.gameObject.GetComponent<Basic_Enemy>().TakeDamage(ballDamage);
-            Debug.Log(collision.gameObject.GetComponent<Unit>().health);
+            collision.gameObject.GetComponent<Basic_Enemy>().TakeDamage(GetBallDamage());
+            // Debug.Log(collision.gameObject.GetComponent<Unit>().health);
         }
+    }
+    
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        Vector3 preCollisionVelocity = rb.velocity;
+        
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            print("player collision exited");
+        }
+
     }
 
     // calculates damage of ball with respect to balls speed
-    private int BallDamage()
+    private int GetBallDamage()
     {
         int BallDamage = Mathf.RoundToInt(damageSpeedMultiplier * rb.velocity.magnitude);
-        print(rb.velocity.magnitude);
+        // return ballDamage * rb.velocity.normalized.magnitude;
+        print("BallDamage: " + BallDamage);
         return BallDamage;
     }
-    
-
 }  
