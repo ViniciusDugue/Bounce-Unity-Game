@@ -2407,6 +2407,22 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: whiteShift.a
+      value: 0.4745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: whiteShift.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: whiteShift.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: whiteShift.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: ballHoldRange
       value: 3
       objectReference: {fileID: 0}
@@ -6652,6 +6668,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132ecbe2079407142a61189b0326ee5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.07167423
+      outSlope: 0.07167423
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.15117247
+      value: 1.0108352
+      inSlope: 0.022914167
+      outSlope: 0.022914167
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.26576072
+      value: 1.0078735
+      inSlope: -0.020696325
+      outSlope: -0.020696325
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5456351
+      value: 1.0035224
+      inSlope: -0.011649554
+      outSlope: -0.011649554
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.007752351
+      outSlope: -0.007752351
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  cameraLeadOffset: 0
 --- !u!81 &1441528133
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9029,9 +9097,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc479c5e73ddcc49be8597efa35986b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballSize: 1
   ballDamage: 5
-  damageSpeedMultiplier: 0.3
+  playerCameraScript: {fileID: 1441528132}
+  damageSpeedMultiplier: 0.2
   ballInitialSpeed: 0
+  ballShakeDuration: 0.3
 --- !u!1 &1889836280
 GameObject:
   m_ObjectHideFlags: 0

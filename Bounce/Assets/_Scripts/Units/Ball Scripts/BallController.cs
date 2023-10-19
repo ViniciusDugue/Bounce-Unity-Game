@@ -9,18 +9,21 @@ public class BallController : MonoBehaviour
     // ball bounces off player and colliders
     // on collision ball deals damage to enemies
     // ball is enabled in level one in gamemanager and is spawned in next to the player in each level
-
+    public float ballSize = 1.0f;
     private Rigidbody2D rb;
     private GameObject ball;
     public int ballDamage = 10;
+    public PlayerCamera playerCameraScript;
     [SerializeField] private float damageSpeedMultiplier;
     [SerializeField] private float ballInitialSpeed = 20f;
+    public float ballShakeDuration;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         ball = gameObject;
         rb.velocity = new Vector3(-1,-1,0).normalized * ballInitialSpeed;
         // dynamicCollider= transform.Find("ChildObject");
+        // SetBallSize();
     }
 
     public void ActivateBall()
@@ -56,9 +59,11 @@ public class BallController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             print("enemy collision!");
+            
             rb.velocity *= 1.0f;
             collision.gameObject.GetComponent<Basic_Enemy>().TakeDamage(GetBallDamage());
-            // Debug.Log(collision.gameObject.GetComponent<Unit>().health);
+            playerCameraScript.ShakeCamera(ballShakeDuration);
+            print("shake has occurred");
         }
     }
     
@@ -82,4 +87,16 @@ public class BallController : MonoBehaviour
         print("BallDamage: " + BallDamage);
         return BallDamage;
     }
+    // private void SetBallSize()
+    // {
+    //     // Scale the sprite based on the current scale multiplied by ballSize
+    //     transform.localScale = new Vector3(transform.localScale.x * ballSize, transform.localScale.y * ballSize, 1);
+
+    //     // Adjust the CircleCollider2D radius based on the current radius multiplied by ballSize
+    //     CircleCollider2D collider = GetComponent<CircleCollider2D>();
+    //     if (collider != null)
+    //     {
+    //         collider.radius *= ballSize;
+    //     }
+    // }
 }  

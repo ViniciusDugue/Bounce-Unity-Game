@@ -22,6 +22,10 @@ public class Unit : MonoBehaviour
     [HideInInspector] public float totalDamageTaken; 
     [HideInInspector] public float totalMagikaUsed;
 
+    public bool isColorShifted = false;
+    public Color whiteShift;
+    public Color redShift;
+    
     public ContactFilter2D movementFilter;
     public List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public Rigidbody2D rb;
@@ -120,5 +124,22 @@ public class Unit : MonoBehaviour
         // Move the unit in the chosen direction
         transform.position = Vector2.MoveTowards(transform.position, transform.position + new Vector3(moveVector.x, moveVector.y,0), speed * Time.deltaTime);
         // rb.MovePosition(rb.position + moveVector);
+    }
+
+    public IEnumerator ShiftColor(Color colorShift, float duration)
+    {
+        SpriteRenderer unitSpriteRenderer = GetComponent<SpriteRenderer>();
+        isColorShifted = true;
+        Color originalColor = unitSpriteRenderer.color;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            unitSpriteRenderer.color = colorShift;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        isColorShifted = false;
+        unitSpriteRenderer.color = originalColor;
     }
 }

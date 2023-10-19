@@ -395,6 +395,9 @@ MonoBehaviour:
   goldCollected: 0
   totalDamageTaken: 0
   totalMagikaUsed: 0
+  isColorShifted: 0
+  whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
+  redShift: {r: 0, g: 0, b: 0, a: 0}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -893,6 +896,9 @@ MonoBehaviour:
   goldCollected: 0
   totalDamageTaken: 0
   totalMagikaUsed: 0
+  isColorShifted: 0
+  whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
+  redShift: {r: 0, g: 0, b: 0, a: 0}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -7254,6 +7260,9 @@ MonoBehaviour:
   goldCollected: 0
   totalDamageTaken: 0
   totalMagikaUsed: 0
+  isColorShifted: 0
+  whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
+  redShift: {r: 0, g: 0, b: 0, a: 0}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -7449,6 +7458,9 @@ MonoBehaviour:
   goldCollected: 0
   totalDamageTaken: 0
   totalMagikaUsed: 0
+  isColorShifted: 0
+  whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
+  redShift: {r: 0, g: 0, b: 0, a: 0}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -7738,6 +7750,22 @@ PrefabInstance:
     - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
       propertyPath: chaseRange
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
+      propertyPath: whiteShift.a
+      value: 0.36862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
+      propertyPath: whiteShift.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
+      propertyPath: whiteShift.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
+      propertyPath: whiteShift.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
       propertyPath: maxChaseRange
@@ -8354,6 +8382,9 @@ MonoBehaviour:
   goldCollected: 0
   totalDamageTaken: 0
   totalMagikaUsed: 0
+  isColorShifted: 0
+  whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
+  redShift: {r: 0, g: 0, b: 0, a: 0}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -9107,6 +9138,9 @@ MonoBehaviour:
   goldCollected: 0
   totalDamageTaken: 0
   totalMagikaUsed: 0
+  isColorShifted: 0
+  whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
+  redShift: {r: 0, g: 0, b: 0, a: 0}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -9556,6 +9590,9 @@ MonoBehaviour:
   goldCollected: 0
   totalDamageTaken: 0
   totalMagikaUsed: 0
+  isColorShifted: 0
+  whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
+  redShift: {r: 0, g: 0, b: 0, a: 0}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -10516,6 +10553,9 @@ MonoBehaviour:
   goldCollected: 0
   totalDamageTaken: 0
   totalMagikaUsed: 0
+  isColorShifted: 0
+  whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
+  redShift: {r: 0, g: 0, b: 0, a: 0}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0

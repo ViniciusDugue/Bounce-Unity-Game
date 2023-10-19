@@ -39,8 +39,6 @@ public class PlayerController : Unit
     public LayerMask wallLayerMask;
     public LayerMask enemyLayerMask;
 
-    public Color redShift;
-    private bool isRed = false;
     [HideInInspector] public int numSpikeTiles = 0;
     public bool playerOnSpike { get { return numSpikeTiles > 0; } }
 
@@ -104,7 +102,6 @@ public class PlayerController : Unit
         {
             
             Vector3 mousePosition = playerCamera.ScreenToWorldPoint(Input.mousePosition) - new Vector3(0, 0, playerCamera.ScreenToWorldPoint(Input.mousePosition).z);
-            print(mousePosition);
             Vector3 ballHoldDirection = (mousePosition - player.transform.position).normalized;
             
             ball.transform.position = player.transform.position + ballHoldDirection *ballHoldDistance;
@@ -263,7 +260,7 @@ public class PlayerController : Unit
     public IEnumerator HoldCoroutine()
     {
         isHoldingBall = true; 
-
+        ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         float startTime = Time.time;
         float endTime = startTime +holdDuration;
         while (Time.time < startTime + holdDuration && isHoldingBall == true)
@@ -358,42 +355,10 @@ public class PlayerController : Unit
         {
             playerStats.totalDamageTaken += (damageTaken - playerStats.defense);
         }
-        if (!isRed) 
+        if (isColorShifted == false) 
         {
-        StartCoroutine(ShiftRed(redShift, 0.15f));
+        StartCoroutine(ShiftColor(redShift, 0.15f));
         }
-    }
-    
-    public IEnumerator ShiftRed(Color colorShift, float duration)
-    {
-        isRed = true;
-        Color originalColor = playerSpriteRenderer.color;
-        
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            playerSpriteRenderer.color = Color.Lerp(originalColor, colorShift, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        isRed = false;
-        playerSpriteRenderer.color = originalColor;
-    }
-
-    public IEnumerator ShiftColor(Color colorShift, float duration)
-    {
-        Color originalColor = playerSpriteRenderer.color;
-        
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            playerSpriteRenderer.color = colorShift;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        playerSpriteRenderer.color = originalColor;
     }
 
     public void UseMagika(float abilityCost)

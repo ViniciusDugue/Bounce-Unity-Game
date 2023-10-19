@@ -121,6 +121,10 @@ public class Basic_Enemy : Unit
         }
         else
         {
+            if (isColorShifted == false) 
+            {
+            StartCoroutine(ShiftColor(whiteShift, 0.15f));
+            }
             health-= damage;
         }
     }
