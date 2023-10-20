@@ -25,18 +25,28 @@ public class PlayerController : Unit
     [HideInInspector] public SpriteRenderer playerSpriteRenderer;
     private DeathMenu deathMenu;
     
+    private InputAction ballShootInput;
     public GameObject ball;
     public float ballShootSpeed;
-    private InputAction ballShootInput;
-    public float ballShootRadius;
-    
-    public Color redShift;
-    private bool isRed = false;
+    public float ballShootRange;
+
+    private InputAction ballHoldInput;
+    public float ballHoldRange;
+    public float ballHoldDistance;
+    public bool isHoldingBall = false;
+    public float holdDuration;
+
+    public LayerMask wallLayerMask;
+    public LayerMask enemyLayerMask;
+
     [HideInInspector] public int numSpikeTiles = 0;
     public bool playerOnSpike { get { return numSpikeTiles > 0; } }
 
     public void Awake()
     {
+
+        wallLayerMask = LayerMask.GetMask("Tilemap");
+        enemyLayerMask = LayerMask.GetMask("Enemy");
         rb =  GetComponent<Rigidbody2D>();
         pauseMenu = FindObjectOfType<PauseMenu>();
         deathMenu = FindObjectOfType<DeathMenu>();
@@ -52,7 +62,7 @@ public class PlayerController : Unit
         ability2Input = playerControls.Player.Ability2;
         ability3Input = playerControls.Player.Ability3;
         ballShootInput =  playerControls.Player.ShootBall;
-
+        ballHoldInput = playerControls.Player.HoldBall;
         if(pause==null)
             print("player pause is null");
         DeactivatePlayer();
@@ -87,6 +97,16 @@ public class PlayerController : Unit
             }
             deathMenu.OpenDeathMenu();
         }
+
+        if(isHoldingBall ==true)
+        {
+            
+            Vector3 mousePosition = playerCamera.ScreenToWorldPoint(Input.mousePosition) - new Vector3(0, 0, playerCamera.ScreenToWorldPoint(Input.mousePosition).z);
+            Vector3 ballHoldDirection = (mousePosition - player.transform.position).normalized;
+            
+            ball.transform.position = player.transform.position + ballHoldDirection *ballHoldDistance;
+            
+        }
     }
 
     private void OnEnable()
@@ -101,6 +121,8 @@ public class PlayerController : Unit
         ability3Input.performed +=UseAbility3;
         ballShootInput.Enable();
         ballShootInput.performed +=ShootBall;
+        ballHoldInput.Enable();
+        ballHoldInput.performed +=HoldBall;
         Debug.Log("Player enabled");
     }
 
@@ -116,6 +138,8 @@ public class PlayerController : Unit
         ability3Input.performed -=UseAbility3;
         ballShootInput.Disable();
         ballShootInput.performed -=ShootBall;
+        ballHoldInput.Disable();
+        ballHoldInput.performed -=HoldBall;
         Debug.Log("Player disabled");
 
     }
@@ -140,31 +164,39 @@ public class PlayerController : Unit
 
     void FixedUpdate()
     {
+        DrawBallTrajectoryLines();
         MovePlayer(moveInput);
     }
 
     public void MovePlayer(Vector2 direction)
     {
-        Vector2 movementDirection= new Vector2(0,0);
-        Vector2 velocityDirection = new Vector2(moveInput.x, moveInput.y);
-        if (checkCollision(moveInput)== false)
+        Vector2 horizontalMoveDirection = new Vector2(direction.x, 0).normalized * speed * Time.fixedDeltaTime;
+        Vector2 verticalMoveDirection = new Vector2(0, direction.y).normalized * speed * Time.fixedDeltaTime;
+        if (checkCollision(direction)== true)
         {
-            movementDirection = moveInput;
-        }  
-        //try left/right
-        else if(checkCollision(new Vector2(moveInput.x, 0))==false)
-        {
-            movementDirection = new Vector2(moveInput.x, 0);
-        }
-        //try up/down
-        else if(checkCollision(new Vector2(0, moveInput.y))==false)
-        {
-            movementDirection = new Vector2(0, moveInput.y);
-        }
-        // movementDirection = moveInput;
-        Vector2 moveVector = movementDirection * speed * Time.fixedDeltaTime;
+            //try left/right
+            if(checkCollision(horizontalMoveDirection.normalized)==false)
+            {
+                direction = horizontalMoveDirection;
+            }
+            //try up/down
+            else if(checkCollision(verticalMoveDirection.normalized)==false)
+            {
+                direction = verticalMoveDirection;
+            }
+            else
+            {
+                direction = Vector2.zero;
+            }
+        }   
+        
+        // if(direction.magnitude !=0.0f)
+        // {
+        //     print("Object Name: " + gameObject.name + ", Move Vector: " + direction);
+        // }
+        Vector2 moveVector = direction * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + moveVector);
-        rb.velocity = velocityDirection*speed;
+        rb.velocity = direction * speed;
     }
 
     public void OnMove(InputValue value)
@@ -193,17 +225,107 @@ public class PlayerController : Unit
             abilityManager.UseAbility3();
         }
     }
-
+    
     public void ShootBall(InputAction.CallbackContext context)
     {
         float distanceFromBall = Vector3.Distance(player.transform.position, ball.transform.position);
-        if( distanceFromBall<= ballShootRadius && context.performed &&isDead == false && Time.timeScale==1f)
+        if( distanceFromBall<= ballShootRange && isHoldingBall==true && context.performed &&isDead == false && Time.timeScale==1f)
         {
+            isHoldingBall = false;
             Vector3 ballPosition = ball.transform.position;
             Vector3 mousePosition = playerCamera.ScreenToWorldPoint(Input.mousePosition)-new Vector3(0,0,playerCamera.ScreenToWorldPoint(Input.mousePosition).z);
             Vector3 shootDirection = (mousePosition - ballPosition).normalized;
             ball.GetComponent<Rigidbody2D>().velocity = shootDirection * ballShootSpeed;
             print("Shootball!!");
+        }
+    }
+    public void HoldBall(InputAction.CallbackContext context)
+    {
+        //on button press
+        // if in ballradius, ball moves towards closest spot in ballholding radius around player
+        // ball will stay near player and follow cursor while rotating around player in radius
+        // turn on isHolding bool
+        // allow for drawing trajectory line with isHolding bool
+        //allow for Shooting ball in ball function with isHolding bool
+        
+        float distanceFromBall = Vector3.Distance(player.transform.position, ball.transform.position);
+        if (distanceFromBall<= ballHoldRange && context.performed &&isDead == false && Time.timeScale==1f)
+        {
+            print("hold ball used");
+            StartCoroutine(HoldCoroutine());
+        }
+    
+    }
+
+    public IEnumerator HoldCoroutine()
+    {
+        isHoldingBall = true; 
+        ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        float startTime = Time.time;
+        float endTime = startTime +holdDuration;
+        while (Time.time < startTime + holdDuration && isHoldingBall == true)
+        {
+            float remainingTime = endTime - Time.time;
+            yield return null;
+        }
+        isHoldingBall = false; 
+    }
+
+    public void DrawBallTrajectoryLines()
+    {
+        float distanceFromBall = Vector3.Distance(player.transform.position, ball.transform.position);
+        float maxLineDistance  = 30.0f;
+        float currentLineDistance = 0.0f;
+        int trajectoryBounces = 1;
+
+        if (distanceFromBall <= ballShootRange && !isDead)
+        {
+            Vector3 ballPosition = ball.transform.position;
+            Vector3 mousePosition = playerCamera.ScreenToWorldPoint(Input.mousePosition) - new Vector3(0, 0, playerCamera.ScreenToWorldPoint(Input.mousePosition).z);
+            Vector3 ballDirection = (mousePosition - ballPosition).normalized;
+
+            while (currentLineDistance < maxLineDistance && trajectoryBounces <= 6)
+            {
+                Vector3 rayCastOffset  = ballDirection * 0.05f;
+                RaycastHit2D hit = Physics2D.Raycast(ballPosition + rayCastOffset, ballDirection, maxLineDistance, wallLayerMask | enemyLayerMask);
+                // print("Ray number: " + trajectoryBounces + " casted");
+                if (hit.collider != null)
+                {
+                    Vector3 wallNormal = hit.normal;
+                    Vector3 collisionPosition = hit.point;
+                    float lineLength = (collisionPosition - ballPosition).magnitude;
+                    // print("Linelength: "+ lineLength);
+                    if(lineLength ==0.0f)
+                    {
+                        // print("line length is zero");
+                    }
+                    if ((currentLineDistance + lineLength) < maxLineDistance)
+                    {
+                        currentLineDistance += lineLength;
+                        // print("Ray number: " + trajectoryBounces + " casted" + " currentLineDistance + lineLength: " + currentLineDistance + lineLength +"maxLineDistance: " + maxLineDistance );
+                        Debug.DrawLine(ballPosition, collisionPosition, Color.red);
+                        
+                    }
+                    else if((currentLineDistance + lineLength) > maxLineDistance)
+                    {
+                        // print("Draw leftover line");
+                        float leftOverLineDistance = maxLineDistance - currentLineDistance;
+                        Debug.DrawLine(ballPosition, ballPosition + ballDirection * leftOverLineDistance, Color.red);
+                        currentLineDistance += leftOverLineDistance;
+                    }
+
+                    ballPosition = collisionPosition;
+                    ballDirection = Vector3.Reflect(ballDirection, wallNormal).normalized;
+                    
+                    // print("currentLineDistance: " + currentLineDistance);
+                    trajectoryBounces++;
+                }
+                else
+                {
+                    print("collider is null");
+                    break; // Break out of the loop if no collision was detected
+                }
+            }
         }
     }
 
@@ -233,42 +355,10 @@ public class PlayerController : Unit
         {
             playerStats.totalDamageTaken += (damageTaken - playerStats.defense);
         }
-        if (!isRed) 
+        if (isColorShifted == false) 
         {
-        StartCoroutine(ShiftRed(redShift, 0.15f));
+        StartCoroutine(ShiftColor(redShift, 0.15f));
         }
-    }
-
-    public IEnumerator ShiftRed(Color colorShift, float duration)
-    {
-        isRed = true;
-        Color originalColor = playerSpriteRenderer.color;
-        
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            playerSpriteRenderer.color = Color.Lerp(originalColor, colorShift, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        isRed = false;
-        playerSpriteRenderer.color = originalColor;
-    }
-
-    public IEnumerator ShiftColor(Color colorShift, float duration)
-    {
-        Color originalColor = playerSpriteRenderer.color;
-        
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            playerSpriteRenderer.color = colorShift;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        playerSpriteRenderer.color = originalColor;
     }
 
     public void UseMagika(float abilityCost)
