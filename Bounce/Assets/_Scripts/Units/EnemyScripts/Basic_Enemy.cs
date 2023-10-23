@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Basic_Enemy : Unit
 {
-    // public float chaseRange = 10f;
-    // public float maxChaseRange = 2f;
     private Transform target;
-    private float minAmbientRange = 2.5f;
+    public float minAmbientRange = 2.5f;
     private Vector3 targetDirection;
     private Vector3 startingPosition;
     private GameObject player;
     private float chaseTimer = 0f;
-
+    private float randomDirectionTime;
+    
     public float maxRandomDirectionTime;
 
     public void Awake()
@@ -41,26 +40,22 @@ public class Basic_Enemy : Unit
             if (distanceFromStart > minAmbientRange)
             {
                 // Move the unit back towards the starting position
-                /*Vector3 moveDirection = (startingPosition - transform.position).normalized;
-                MoveUnit(moveDirection * Time.deltaTime* speed*4);*/
-
-                // Set the target direction back to the starting position
                 targetDirection = (startingPosition - transform.position).normalized;
-                directionTime = Random.Range(0.5f, 1.5f);
             }
-
+            // If the unit has been moving in the same direction for too long, generate a new random direction
+            if (randomDirectionTime < 0f)
+            {
+                Vector3 randomDirection = Random.insideUnitCircle.normalized;
+                randomDirectionTime = Random.Range(0f, maxRandomDirectionTime);
+                targetDirection = randomDirection;
+            }
             // Universal move unit
-            MoveUnit(targetDirection * Time.deltaTime * speed * 4);
+            MoveUnit(targetDirection * Time.deltaTime * speed);
             chaseTimer = 0f;
 
-            // If the unit has been moving in the same direction for too long, generate a new random direction
-            if (directionTime < 0f)
-            {
-                targetDirection = Random.insideUnitCircle.normalized;
-                directionTime = Random.Range(0f, maxRandomDirectionTime);
-            }
+            
 
-            directionTime -= Time.deltaTime;
+            randomDirectionTime -= Time.deltaTime;
         }
         if (Vector3.Distance(transform.position, target.position) <= maxChaseRange && chaseTimer >= 2.5f)
         {

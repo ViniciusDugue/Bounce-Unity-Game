@@ -418,6 +418,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   rb: {fileID: 46701246}
+  minAmbientRange: 2.5
+  maxRandomDirectionTime: 0.3
 --- !u!50 &46701246
 Rigidbody2D:
   serializedVersion: 4
@@ -924,6 +926,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   rb: {fileID: 178440339}
+  minAmbientRange: 2.5
+  maxRandomDirectionTime: 0.3
 --- !u!50 &178440339
 Rigidbody2D:
   serializedVersion: 4
@@ -5833,6 +5837,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   rb: {fileID: 1069612473}
+  minAmbientRange: 2.5
+  maxRandomDirectionTime: 0.3
 --- !u!50 &1069612473
 Rigidbody2D:
   serializedVersion: 4
@@ -6036,6 +6042,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   rb: {fileID: 1163936083}
+  minAmbientRange: 2.5
+  maxRandomDirectionTime: 0.3
 --- !u!50 &1163936083
 Rigidbody2D:
   serializedVersion: 4
@@ -6339,6 +6347,10 @@ PrefabInstance:
     - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
       propertyPath: textPositionOffset.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
+      propertyPath: maxRandomDirectionTime
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
       propertyPath: movementFilter.layerMask.m_Bits
@@ -6974,6 +6986,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   rb: {fileID: 1504432669}
+  minAmbientRange: 2.5
+  maxRandomDirectionTime: 0.3
 --- !u!50 &1504432669
 Rigidbody2D:
   serializedVersion: 4
@@ -7735,6 +7749,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   rb: {fileID: 1759986595}
+  minAmbientRange: 2.5
+  maxRandomDirectionTime: 0.3
 --- !u!50 &1759986595
 Rigidbody2D:
   serializedVersion: 4
@@ -8223,6 +8239,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   rb: {fileID: 1864390312}
+  minAmbientRange: 2.5
+  maxRandomDirectionTime: 0.3
 --- !u!50 &1864390312
 Rigidbody2D:
   serializedVersion: 4
@@ -9191,6 +9209,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   rb: {fileID: 2139032929}
+  minAmbientRange: 2.5
+  maxRandomDirectionTime: 0.3
 --- !u!50 &2139032929
 Rigidbody2D:
   serializedVersion: 4
