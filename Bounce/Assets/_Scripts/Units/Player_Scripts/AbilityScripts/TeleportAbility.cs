@@ -25,9 +25,9 @@ public class TeleportAbility : Ability
             Debug.Log($"{abilityName} ability is on cooldown!");
             return;
         }
-        if (abilityEquiped == true && playerStats.magika - abilityCost >= 0 && abilityOnCD == false && !PauseMenu.isPaused)
+        if (abilityEquiped == true && abilityOnCD == false && !PauseMenu.isPaused)
         {
-            playerFunctions.UseMagika(abilityCost);
+            // playerFunctions.UseMagika(abilityCost);
 
             Vector3 teleportDestination = mousePosition;
             Vector3 teleportDirection = (mousePosition - player.transform.position).normalized;

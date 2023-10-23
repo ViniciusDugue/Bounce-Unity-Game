@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FloatingTextScript : MonoBehaviour
 {
-    public float destroyFloatingTextTime;
-    void Start()
-    {
-      Destroy(gameObject, destroyFloatingTextTime);  
-    }
+  public float destroyFloatingTextTime;
+  void Start()
+  {
+    Destroy(gameObject, destroyFloatingTextTime);  
+  }
 
 }

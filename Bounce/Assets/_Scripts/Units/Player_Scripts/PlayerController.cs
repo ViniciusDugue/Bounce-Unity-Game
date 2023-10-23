@@ -11,7 +11,7 @@ public class PlayerController : Unit
     private InputAction ability3Input;
 
     public TextMeshProUGUI healthText;
-    public TextMeshProUGUI magikaText;
+    // public TextMeshProUGUI BounceText;
     public Unit playerStats;
     private Vector2 moveInput;
     private GameObject player;
@@ -28,14 +28,18 @@ public class PlayerController : Unit
     
     private InputAction ballShootInput;
     public GameObject ball;
+    public BallController ballControllerScript;
     public float ballShootSpeed;
     public float ballShootRange;
+    public bool canShootBall = true; 
+    public float shootingBallCooldownDuration;
 
     private InputAction ballHoldInput;
     public float ballHoldRange;
     public float ballHoldDistance;
     public bool isHoldingBall = false;
     public float holdDuration;
+    
 
     public LayerMask wallLayerMask;
     public LayerMask enemyLayerMask;
@@ -85,9 +89,9 @@ public class PlayerController : Unit
     {
         deathMenu = FindObjectOfType<DeathMenu>();
         pauseMenu = FindObjectOfType<PauseMenu>();
-        PassiveMagikaRegeneration();
+        
         healthText.text = Mathf.Round(playerStats.health).ToString() + " / " + playerStats.maxHealth.ToString();
-        magikaText.text = Mathf.Round(playerStats.magika).ToString() + " / " + playerStats.maxMagika.ToString();
+        // magikaText.text = Mathf.Round(playerStats.magika).ToString() + " / " + playerStats.maxMagika.ToString();
         if(isDead ==true && deathMenu.isDeathMenuOpen==false)
         {
             print("player died");
@@ -97,11 +101,10 @@ public class PlayerController : Unit
                 print("death menu is null");
             }
             deathMenu.OpenDeathMenu();
-        }
+        }  
 
         if(isHoldingBall ==true)
         {
-            
             Vector3 mousePosition = playerCamera.ScreenToWorldPoint(Input.mousePosition) - new Vector3(0, 0, playerCamera.ScreenToWorldPoint(Input.mousePosition).z);
             Vector3 ballHoldDirection = (mousePosition - player.transform.position).normalized;
             ball.transform.position = player.transform.position + ballHoldDirection *ballHoldDistance;
@@ -191,10 +194,6 @@ public class PlayerController : Unit
             }
         }   
         
-        // if(direction.magnitude !=0.0f)
-        // {
-        //     print("Object Name: " + gameObject.name + ", Move Vector: " + direction);
-        // }
         Vector2 moveVector = direction * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + moveVector);
         rb.velocity = direction * speed;
@@ -229,8 +228,9 @@ public class PlayerController : Unit
     
     public void ShootBall(InputAction.CallbackContext context)
     {
+        ballControllerScript.ResetBounceCombo();
         float distanceFromBall = Vector3.Distance(player.transform.position, ball.transform.position);
-        if( distanceFromBall<= ballShootRange && isHoldingBall==true && context.performed &&isDead == false && Time.timeScale==1f)
+        if( distanceFromBall<= ballShootRange && context.performed &&isDead == false && Time.timeScale==1f)
         {
             isHoldingBall = false;
             Vector3 ballPosition = ball.transform.position;
@@ -240,6 +240,7 @@ public class PlayerController : Unit
             print("Shootball!!");
         }
     }
+
     public void HoldBall(InputAction.CallbackContext context)
     {
         //on button press
@@ -255,7 +256,6 @@ public class PlayerController : Unit
             print("hold ball used");
             StartCoroutine(HoldCoroutine());
         }
-    
     }
 
     public IEnumerator HoldCoroutine()
@@ -270,6 +270,20 @@ public class PlayerController : Unit
             yield return null;
         }
         isHoldingBall = false; 
+    }
+    
+    public IEnumerator ShootingBallCooldownCoroutine()
+    {
+        canShootBall = false; 
+        ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        float startTime = Time.time;
+        float endTime = startTime + shootingBallCooldownDuration;
+        while (Time.time < startTime + shootingBallCooldownDuration && canShootBall == false)
+        {
+            float remainingTime = endTime - Time.time;
+            yield return null;
+        }
+        canShootBall = true; 
     }
 
     public void DrawBallTrajectoryLines()
@@ -363,14 +377,7 @@ public class PlayerController : Unit
         }
     }
 
-    public void UseMagika(float abilityCost)
-    {
-        if(playerStats.magika - abilityCost >=0)
-        {
-            playerStats.totalMagikaUsed += abilityCost;
-            playerStats.magika-=abilityCost;
-        }
-    }
+    
 
     public void HealHealth(float healAmount)
     {
@@ -384,40 +391,12 @@ public class PlayerController : Unit
         }
     }
 
-    public void HealMagika(float healMagikaAmount)
-    {
-        if (playerStats.magika + healMagikaAmount >=playerStats.maxMagika)
-           {
-                playerStats.magika = playerStats.maxMagika;
-           }
-        else
-        {
-            playerStats.magika += healMagikaAmount;
-        }
-    }
-
-    public void PassiveMagikaRegeneration()
-    {
-        if(rb.velocity.magnitude!=0f)
-        {
-            if (playerStats.magika + magikaRegen >=playerStats.maxMagika)
-            {
-                playerStats.magika = playerStats.maxMagika;
-            }
-            else
-            {
-                playerStats.magika += magikaRegen;
-            }
-        }
-    }
-
     public void ResetPlayerStats()
     {
         isDead=false;
         playerStats.health = playerStats.maxHealth;
-        playerStats.magika = playerStats.maxMagika;
+        ballControllerScript.bounce = 0;
         playerStats.totalDamageTaken = 0;
-        playerStats.totalMagikaUsed = 0;
         // abilityManager.SetEquipedAbilites();
     }
 

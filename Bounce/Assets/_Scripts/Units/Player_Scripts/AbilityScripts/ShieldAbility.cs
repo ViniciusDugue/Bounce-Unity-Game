@@ -13,9 +13,9 @@ public class ShieldAbility : Ability
             Debug.Log($"{abilityName} ability is on cooldown!");
             return;
         }
-        if (abilityEquiped==true && playerStats.magika - abilityCost >= 0 && abilityActive==false && abilityOnCD == false && !PauseMenu.isPaused )
+        if (abilityEquiped==true && abilityActive==false && abilityOnCD == false && !PauseMenu.isPaused )
         {
-            playerFunctions.UseMagika(abilityCost);
+            // playerFunctions.UseMagika(abilityCost);
             Vector3 shieldSpawnPosition = player.transform.position+ new Vector3(0,-2,0);
             GameObject shield = Instantiate(abilityPrefab,shieldSpawnPosition, Quaternion.identity);
             Destroy(shield, abilityDuration);

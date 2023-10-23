@@ -15,9 +15,9 @@ public class MasochistAbility : Ability
             Debug.Log($"{abilityName} ability is on cooldown!");
             return;
         }
-        if (abilityEquiped==true && playerStats.magika - abilityCost >= 0 && abilityActive==false && abilityOnCD == false && !PauseMenu.isPaused )
+        if (abilityEquiped==true && abilityActive==false && abilityOnCD == false && !PauseMenu.isPaused )
         {
-            playerFunctions.UseMagika(abilityCost);
+            // playerFunctions.UseMagika(abilityCost);
             StartCoroutine(AbilityCooldownCoroutine(abilityCooldownText, abilityImageIcon));
             StartCoroutine(AbilityActiveCoroutine(abilityDurationText));
             StartCoroutine(HealFromDamageTaken());

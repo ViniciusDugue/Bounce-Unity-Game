@@ -19,9 +19,9 @@ public class ArcticFreezeAbility : Ability
         // set enemy speed to 0 and aggro off for duration
         //spawn frostbite game object on all enemies in radius and make it disapear after duration
         //bonus** make frostbite gameobject scale with enemy gameobject scale
-        if (abilityEquiped==true &&playerStats.magika - abilityCost >= 0 && abilityOnCD == false && !PauseMenu.isPaused)
+        if (abilityEquiped==true  && abilityOnCD == false && !PauseMenu.isPaused)
         {
-            playerFunctions.UseMagika(abilityCost);
+            // playerFunctions.UseMagika(abilityCost);
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(mousePosition, freezeRadius);
 
             foreach (Collider2D hitCollider in hitColliders)

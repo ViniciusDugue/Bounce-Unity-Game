@@ -13,9 +13,9 @@ public class HealAbility : Ability
             Debug.Log($"{abilityName} ability is on cooldown!");
             return;
         }
-        if (abilityEquiped==true &&playerStats.magika - abilityCost >= 0 && abilityOnCD == false && !PauseMenu.isPaused)
+        if (abilityEquiped==true && abilityOnCD == false && !PauseMenu.isPaused)
         {
-            playerFunctions.UseMagika(abilityCost);
+            // playerFunctions.UseMagika(abilityCost);
             playerFunctions.HealHealth(healAbilityAmount);
             StartCoroutine(AbilityCooldownCoroutine(abilityCooldownText, abilityImageIcon));
         }

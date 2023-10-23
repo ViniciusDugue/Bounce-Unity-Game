@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 27772037}
   - component: {fileID: 27772036}
   m_Layer: 0
-  m_Name: MP_Overlay
+  m_Name: BounceMeter_Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,18 +181,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27772034}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.006972514, y: 0, z: 0, w: 0.9999757}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.2, y: 3.2, z: 1}
+  m_LocalScale: {x: 4.02016, y: 4.02016, z: 1.2563}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1596981941}
+  - {fileID: 1992244234}
   m_Father: {fileID: 2070105546}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.799, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -564, y: 343}
-  m_SizeDelta: {x: 137.8752, y: 36.2831}
+  m_AnchoredPosition: {x: -879, y: -149}
+  m_SizeDelta: {x: 20, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &27772036
 MonoBehaviour:
@@ -214,7 +216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -183452260, guid: af194f333d369e74eb87feb4064d5897, type: 3}
+  m_Sprite: {fileID: -2138104466, guid: fce6c32f143281a4f9fa650719d1e133, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -528,7 +530,7 @@ RectTransform:
   - {fileID: 1362958881}
   - {fileID: 444885103}
   m_Father: {fileID: 2070105546}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1311,16 +1313,16 @@ RectTransform:
   m_GameObject: {fileID: 455448166}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.2, y: 3.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1993997047}
-  m_Father: {fileID: 2070105546}
-  m_RootOrder: 1
+  m_Father: {fileID: 1147081237}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -529.47943, y: 468.57123}
+  m_AnchoredPosition: {x: 23.25879, y: -0.000030517578}
   m_SizeDelta: {x: 144.914, y: 10.4463}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455448168
@@ -1835,15 +1837,15 @@ RectTransform:
   m_GameObject: {fileID: 659493746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.15625, y: 0.15625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2070105546}
-  m_RootOrder: 4
+  m_Father: {fileID: 1147081237}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -527.8008, y: 468.201}
+  m_AnchoredPosition: {x: 23.783264, y: -0.115722656}
   m_SizeDelta: {x: 509.935, y: 312.496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &659493748
@@ -2444,6 +2446,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: maxBounce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: maxHealth
       value: 500
       objectReference: {fileID: 0}
@@ -2619,6 +2625,10 @@ PrefabInstance:
       propertyPath: maxTeleportDistance
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
+      propertyPath: ballControllerScript
+      value: 
+      objectReference: {fileID: 1884508833}
     - target: {fileID: 9109927825809172459, guid: 85a07e0e1dba4e446b75d32981ea96b8, type: 3}
       propertyPath: speedBoostPercentage
       value: 60
@@ -4528,7 +4538,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.2, y: 3.2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 455448167}
+  - {fileID: 659493747}
   m_Father: {fileID: 2070105546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4554,7 +4566,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -5553,7 +5565,6 @@ MonoBehaviour:
   scoreboardText: {fileID: 497872789}
   levelTimeString: 
   totalDamageTaken: 0
-  totalMagikaUsed: 0
   closeCalls: 0
   finalLevelScore: 0
   pointsPerSecondTimer: -5
@@ -7414,7 +7425,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2070105546}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7776,7 +7787,7 @@ GameObject:
   - component: {fileID: 1596981943}
   - component: {fileID: 1596981942}
   m_Layer: 0
-  m_Name: MP_Fill
+  m_Name: BounceMeter_Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7789,19 +7800,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596981940}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.2, y: 3.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 738730793}
-  m_Father: {fileID: 2070105546}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 27772035}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -511.6372, y: 342.99985}
-  m_SizeDelta: {x: 101.6673, y: 7.3602}
+  m_AnchoredPosition: {x: 1.1, y: 0}
+  m_SizeDelta: {x: 116, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1596981942
 MonoBehaviour:
@@ -7815,7 +7826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc04630a96ff4f44594b40cb71f3a39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 708800167}
+  ballScript: {fileID: 1884508833}
 --- !u!114 &1596981943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7863,7 +7874,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9217,10 +9228,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballSize: 1
   ball: {fileID: 1884508828}
-  ballDamage: 5
+  bounce: 0
+  maxBounce: 15
+  damageSpeedMultiplier: 0.2
+  bounceCombos: 0
+  bounceComboTextPrefab: {fileID: 4269941340853626421, guid: 2a3c362bdeb60844cac9df374d73db2a, type: 3}
+  bounceComboTextPosition: {x: 0, y: 0, z: 0}
   playerCameraScript: {fileID: 1441528132}
-  damageSpeedMultiplier: 0.3
-  ballInitialSpeed: 0
   ballShakeDuration: 0.3
 --- !u!1 &1889836280
 GameObject:
@@ -9859,12 +9873,12 @@ GameObject:
   - component: {fileID: 1992244233}
   - component: {fileID: 1992244232}
   m_Layer: 0
-  m_Name: MagikaText
+  m_Name: BounceMeterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1992244232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9971,15 +9985,15 @@ RectTransform:
   m_GameObject: {fileID: 1992244231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.15625, y: 0.15625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2070105546}
-  m_RootOrder: 5
+  m_Father: {fileID: 27772035}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -526.9, y: 342}
+  m_AnchoredPosition: {x: 11.59375, y: -0.31253052}
   m_SizeDelta: {x: 509.935, y: 312.496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1993997046
@@ -10993,11 +11007,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1147081237}
-  - {fileID: 455448167}
   - {fileID: 27772035}
-  - {fileID: 1596981941}
-  - {fileID: 659493747}
-  - {fileID: 1992244234}
   - {fileID: 1559487035}
   - {fileID: 2108541197}
   - {fileID: 81746942}
@@ -11365,7 +11375,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2070105546}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

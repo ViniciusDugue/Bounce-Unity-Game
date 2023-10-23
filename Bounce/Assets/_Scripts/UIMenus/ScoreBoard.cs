@@ -9,7 +9,6 @@ public class ScoreBoard : MonoBehaviour
     public TextMeshProUGUI scoreboardText;
     public string levelTimeString;
     public float totalDamageTaken;
-    public float totalMagikaUsed;
     public int closeCalls;
     public float finalLevelScore;
 
@@ -37,9 +36,8 @@ public class ScoreBoard : MonoBehaviour
         int milliseconds = int.Parse(timeComponents[2]);
         float levelTime = minutes * 60f + seconds + milliseconds / 600f;
         totalDamageTaken = playerStats.totalDamageTaken;
-        totalMagikaUsed = playerStats.totalMagikaUsed;
         closeCalls = playerStats.closeCalls;
-        finalLevelScore = Mathf.Floor(maxLevelPoints + (levelTime * pointsPerSecondTimer ) + (totalDamageTaken * pointsPerDamageTaken) + (totalMagikaUsed * pointsPerManaUsed) + (closeCalls * pointsPerCloseCall));
+        finalLevelScore = Mathf.Floor(maxLevelPoints + (levelTime * pointsPerSecondTimer ) + (totalDamageTaken * pointsPerDamageTaken) + (closeCalls * pointsPerCloseCall));
     }
     public void DisplayScoreBoard()
     {
@@ -47,9 +45,8 @@ public class ScoreBoard : MonoBehaviour
         string finalTime = levelTimeString + "\n";
         string goldCollected = playerStats.goldCollected.ToString() + "\n";
         string damageTaken = totalDamageTaken.ToString() + "\n";
-        string manaUsed = totalMagikaUsed.ToString() + "\n";
         string closeCallsString = closeCalls.ToString() + "\n";
         string totalScore = finalLevelScore.ToString() + "\n";
-        scoreboardText.text = finalTime + goldCollected + damageTaken + manaUsed + closeCallsString + totalScore;
+        scoreboardText.text = finalTime + goldCollected + damageTaken + closeCallsString + totalScore;
     }
 }

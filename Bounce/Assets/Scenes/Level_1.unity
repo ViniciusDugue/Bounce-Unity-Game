@@ -394,9 +394,9 @@ MonoBehaviour:
   closeCalls: 0
   goldCollected: 0
   totalDamageTaken: 0
-  damageTextPrefab: {fileID: 5192131833370410136, guid: c4f8527e31c5e8547a423bb368814d7e, type: 3}
-  textPositionOffset: {x: 0, y: 1, z: 0}
   totalMagikaUsed: 0
+  damageTextPrefab: {fileID: 8337207088649120399, guid: 2f0cffd3e0546e6429609700dc8d444b, type: 3}
+  textPositionOffset: {x: 0, y: 1, z: 0}
   isColorShifted: 0
   whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
   redShift: {r: 0, g: 0, b: 0, a: 0}
@@ -902,9 +902,9 @@ MonoBehaviour:
   closeCalls: 0
   goldCollected: 0
   totalDamageTaken: 0
-  damageTextPrefab: {fileID: 5192131833370410136, guid: c4f8527e31c5e8547a423bb368814d7e, type: 3}
-  textPositionOffset: {x: 0, y: 1, z: 0}
   totalMagikaUsed: 0
+  damageTextPrefab: {fileID: 8337207088649120399, guid: 2f0cffd3e0546e6429609700dc8d444b, type: 3}
+  textPositionOffset: {x: 0, y: 1, z: 0}
   isColorShifted: 0
   whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
   redShift: {r: 0, g: 0, b: 0, a: 0}
@@ -5813,9 +5813,9 @@ MonoBehaviour:
   closeCalls: 0
   goldCollected: 0
   totalDamageTaken: 0
-  damageTextPrefab: {fileID: 5192131833370410136, guid: c4f8527e31c5e8547a423bb368814d7e, type: 3}
-  textPositionOffset: {x: 0, y: 1, z: 0}
   totalMagikaUsed: 0
+  damageTextPrefab: {fileID: 8337207088649120399, guid: 2f0cffd3e0546e6429609700dc8d444b, type: 3}
+  textPositionOffset: {x: 0, y: 1, z: 0}
   isColorShifted: 0
   whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
   redShift: {r: 0, g: 0, b: 0, a: 0}
@@ -6018,9 +6018,9 @@ MonoBehaviour:
   closeCalls: 0
   goldCollected: 0
   totalDamageTaken: 0
-  damageTextPrefab: {fileID: 5192131833370410136, guid: c4f8527e31c5e8547a423bb368814d7e, type: 3}
-  textPositionOffset: {x: 0, y: 1, z: 0}
   totalMagikaUsed: 0
+  damageTextPrefab: {fileID: 8337207088649120399, guid: 2f0cffd3e0546e6429609700dc8d444b, type: 3}
+  textPositionOffset: {x: 0, y: 1, z: 0}
   isColorShifted: 0
   whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
   redShift: {r: 0, g: 0, b: 0, a: 0}
@@ -6343,7 +6343,7 @@ PrefabInstance:
     - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
       propertyPath: damageTextPrefab
       value: 
-      objectReference: {fileID: 5192131833370410136, guid: c4f8527e31c5e8547a423bb368814d7e, type: 3}
+      objectReference: {fileID: 8337207088649120399, guid: 2f0cffd3e0546e6429609700dc8d444b, type: 3}
     - target: {fileID: 132306315045336274, guid: 3ac6dc6bdd2c24e45993510167c923e3, type: 3}
       propertyPath: textPositionOffset.y
       value: 1
@@ -6962,9 +6962,9 @@ MonoBehaviour:
   closeCalls: 0
   goldCollected: 0
   totalDamageTaken: 0
-  damageTextPrefab: {fileID: 5192131833370410136, guid: c4f8527e31c5e8547a423bb368814d7e, type: 3}
-  textPositionOffset: {x: 0, y: 1, z: 0}
   totalMagikaUsed: 0
+  damageTextPrefab: {fileID: 8337207088649120399, guid: 2f0cffd3e0546e6429609700dc8d444b, type: 3}
+  textPositionOffset: {x: 0, y: 1, z: 0}
   isColorShifted: 0
   whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
   redShift: {r: 0, g: 0, b: 0, a: 0}
@@ -7725,9 +7725,9 @@ MonoBehaviour:
   closeCalls: 0
   goldCollected: 0
   totalDamageTaken: 0
-  damageTextPrefab: {fileID: 5192131833370410136, guid: c4f8527e31c5e8547a423bb368814d7e, type: 3}
-  textPositionOffset: {x: 0, y: 1, z: 0}
   totalMagikaUsed: 0
+  damageTextPrefab: {fileID: 8337207088649120399, guid: 2f0cffd3e0546e6429609700dc8d444b, type: 3}
+  textPositionOffset: {x: 0, y: 1, z: 0}
   isColorShifted: 0
   whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
   redShift: {r: 0, g: 0, b: 0, a: 0}
@@ -8215,9 +8215,9 @@ MonoBehaviour:
   closeCalls: 0
   goldCollected: 0
   totalDamageTaken: 0
-  damageTextPrefab: {fileID: 5192131833370410136, guid: c4f8527e31c5e8547a423bb368814d7e, type: 3}
-  textPositionOffset: {x: 0, y: 1, z: 0}
   totalMagikaUsed: 0
+  damageTextPrefab: {fileID: 8337207088649120399, guid: 2f0cffd3e0546e6429609700dc8d444b, type: 3}
+  textPositionOffset: {x: 0, y: 1, z: 0}
   isColorShifted: 0
   whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
   redShift: {r: 0, g: 0, b: 0, a: 0}
@@ -9185,9 +9185,9 @@ MonoBehaviour:
   closeCalls: 0
   goldCollected: 0
   totalDamageTaken: 0
-  damageTextPrefab: {fileID: 5192131833370410136, guid: c4f8527e31c5e8547a423bb368814d7e, type: 3}
-  textPositionOffset: {x: 0, y: 1, z: 0}
   totalMagikaUsed: 0
+  damageTextPrefab: {fileID: 8337207088649120399, guid: 2f0cffd3e0546e6429609700dc8d444b, type: 3}
+  textPositionOffset: {x: 0, y: 1, z: 0}
   isColorShifted: 0
   whiteShift: {r: 1, g: 1, b: 1, a: 0.36862746}
   redShift: {r: 0, g: 0, b: 0, a: 0}

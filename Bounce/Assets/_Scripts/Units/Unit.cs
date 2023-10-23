@@ -14,17 +14,12 @@ public class Unit : MonoBehaviour
     public float chaseRange;
     public float maxChaseRange;
     public float collisionOffset = 0.05f;
-    public float magika;
-    public float maxMagika;
-    public float magikaRegen;
     public float damageReduction = 1f;
     public int closeCalls;
     public int goldCollected;
     [HideInInspector] public float totalDamageTaken; 
     public GameObject damageTextPrefab;
     public Vector3 textPositionOffset;
-    [HideInInspector] public float totalMagikaUsed;
-
     
     public bool isColorShifted = false;
     public Color whiteShift;
@@ -149,28 +144,6 @@ public class Unit : MonoBehaviour
         isColorShifted = false;
         unitSpriteRenderer.color = originalColor;
     }
-    // public IEnumerator Invulnerability(Color colorShift, float duration, int flashCount)
-    // {
-    //     SpriteRenderer unitSpriteRenderer = GetComponent<SpriteRenderer>();
-    //     isColorShifted = true;
-    //     print("invulnerable");
-    //     damageReduction = 1.0f;
-    //     for( int i=0 ; i < flashCount; i++ )
-    //     {
-    //         Color originalColor = unitSpriteRenderer.color;
-    //         float elapsedTime = 0f;
-    //         while (elapsedTime < duration/flashCount)
-    //         {
-    //             unitSpriteRenderer.color = colorShift;
-    //             elapsedTime += Time.deltaTime;
-    //             yield return null;
-    //         }
-    //         unitSpriteRenderer.color = originalColor;
-    //     }
-    //     damageReduction = 0f;
-    //     print("vulnerable");
-    //     isColorShifted = false;
-    // }
 
     public IEnumerator Invulnerability(Color colorShift, float duration, int flashCount)
     {
@@ -197,15 +170,6 @@ public class Unit : MonoBehaviour
         // Create a new instance of the damage text prefab
         GameObject damageText = Instantiate(damageTextPrefab, transform.position + textPositionOffset, Quaternion.identity);
         // Set the text to display the damage taken
-        if( damageText.GetComponent<TextMeshPro>().text!= null)
-        {
-            print("damge text is not null");
-            
-        }
-        else if(damageText.GetComponent<TextMeshPro>().text== null)
-        {
-            print("damage text is null");
-        }
         damageText.GetComponent<TextMeshPro>().text = "-" + damageTaken.ToString();
     }
 }
