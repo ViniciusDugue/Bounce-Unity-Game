@@ -12,7 +12,7 @@ public class Basic_Enemy : Unit
     private GameObject player;
     private float chaseTimer = 0f;
 
-    private float directionTime = 0f;
+    public float maxRandomDirectionTime;
 
     public void Awake()
     {
@@ -57,7 +57,7 @@ public class Basic_Enemy : Unit
             if (directionTime < 0f)
             {
                 targetDirection = Random.insideUnitCircle.normalized;
-                directionTime = Random.Range(0f, 1f);
+                directionTime = Random.Range(0f, maxRandomDirectionTime);
             }
 
             directionTime -= Time.deltaTime;
