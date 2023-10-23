@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         //audioManager.StopMainMenuAudio();
 
         playerScript.ActivatePlayer();
-        playerScript.SpawnPlayerAtLocation(new Vector3(-19,0,0));
+        
         playerUI.ShowPlayerUI();
         playerUI.UpdateLevelText();
         ballScript.ActivateBall();
@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Changed to Level_1 State");
         //waits until the Level_1 scene is  loaded and then subscribes to OnSceneLoaded to Spawn Enemies
         SceneManager.sceneLoaded += OnSceneLoaded;
+        playerScript.SpawnPlayerAtSpawnBox();
     }
 
     public void HandleLevel_2()
@@ -116,7 +117,7 @@ public class GameManager : MonoBehaviour
         playerScript.ActivatePlayer();
         playerUI.ShowPlayerUI();
         playerUI.UpdateLevelText();
-        playerScript.SpawnPlayerAtLocation(new Vector3(-19,0,0));
+        playerScript.SpawnPlayerAtSpawnBox();
         playerScript.ResetPlayerStats();
         Debug.Log("Changed to Level_2 State");
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -129,7 +130,7 @@ public class GameManager : MonoBehaviour
         playerUI.ShowPlayerUI();
         playerUI.UpdateLevelText();
         abilityDraftMenu.OpenDraftMenu();
-        playerScript.SpawnPlayerAtLocation(new Vector3(-19,0,0));
+        playerScript.SpawnPlayerAtSpawnBox();
         playerScript.ResetPlayerStats();
         Debug.Log("Changed to Level_3 State");
         SceneManager.sceneLoaded += OnSceneLoaded;

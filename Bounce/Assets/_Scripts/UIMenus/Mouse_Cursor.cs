@@ -17,6 +17,8 @@ public class Mouse_Cursor : MonoBehaviour
         GameObject playerCameraObject = GameObject.FindGameObjectWithTag("PlayerCamera");
         Camera = playerCameraObject.GetComponent<Camera>();
         Vector2 cursorPos = Camera.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = cursorPos + new Vector2(0.4f,-0.4f);
+        //transform.position = cursorPos + new Vector2(0.4f,-0.4f);// wow cursor
+        transform.position = cursorPos;
+
     }
 }

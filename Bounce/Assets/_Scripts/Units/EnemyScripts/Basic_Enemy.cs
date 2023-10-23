@@ -115,6 +115,7 @@ public class Basic_Enemy : Unit
    
     public void TakeDamage(int damage)
     {
+        DisplayDamageText(damage);
         if(health - damage <=0)
         {
             Destroy(gameObject);

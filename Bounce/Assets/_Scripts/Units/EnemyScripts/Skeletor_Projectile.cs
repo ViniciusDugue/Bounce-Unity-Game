@@ -53,7 +53,7 @@ public class Skeletor_Projectile : Bullet
         {
             player.GetComponent<PlayerController>().TakeDamage(enemy.GetComponent<Basic_Enemy>().attackDamage);
             Destroy(gameObject);
-            Debug.Log(other.gameObject.GetComponent<Unit>().health);
+            // Debug.Log(other.gameObject.GetComponent<Unit>().health);
         }
     }
 }

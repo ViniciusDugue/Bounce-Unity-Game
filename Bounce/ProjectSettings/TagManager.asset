@@ -18,6 +18,7 @@ TagManager:
   - Spike
   - Ball
   - Enemy
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX

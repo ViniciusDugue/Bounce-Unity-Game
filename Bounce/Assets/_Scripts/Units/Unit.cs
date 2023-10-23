@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Unit : MonoBehaviour
 {
@@ -20,12 +21,18 @@ public class Unit : MonoBehaviour
     public int closeCalls;
     public int goldCollected;
     [HideInInspector] public float totalDamageTaken; 
+    public GameObject damageTextPrefab;
+    public Vector3 textPositionOffset;
     [HideInInspector] public float totalMagikaUsed;
 
+    
     public bool isColorShifted = false;
     public Color whiteShift;
     public Color redShift;
-    
+    public int invulnurabilityFlashCount;
+    public float invulnerabilityDuration;
+    public float invulnerabilityShakeDuration;
+
     public ContactFilter2D movementFilter;
     public List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public Rigidbody2D rb;
@@ -141,5 +148,64 @@ public class Unit : MonoBehaviour
         }
         isColorShifted = false;
         unitSpriteRenderer.color = originalColor;
+    }
+    // public IEnumerator Invulnerability(Color colorShift, float duration, int flashCount)
+    // {
+    //     SpriteRenderer unitSpriteRenderer = GetComponent<SpriteRenderer>();
+    //     isColorShifted = true;
+    //     print("invulnerable");
+    //     damageReduction = 1.0f;
+    //     for( int i=0 ; i < flashCount; i++ )
+    //     {
+    //         Color originalColor = unitSpriteRenderer.color;
+    //         float elapsedTime = 0f;
+    //         while (elapsedTime < duration/flashCount)
+    //         {
+    //             unitSpriteRenderer.color = colorShift;
+    //             elapsedTime += Time.deltaTime;
+    //             yield return null;
+    //         }
+    //         unitSpriteRenderer.color = originalColor;
+    //     }
+    //     damageReduction = 0f;
+    //     print("vulnerable");
+    //     isColorShifted = false;
+    // }
+
+    public IEnumerator Invulnerability(Color colorShift, float duration, int flashCount)
+    {
+        SpriteRenderer unitSpriteRenderer = GetComponent<SpriteRenderer>();
+        isColorShifted = true;
+        damageReduction = 1.0f;
+
+        Color originalColor = unitSpriteRenderer.color;
+
+        for(int i = 0; i < flashCount; i++)
+        {
+            unitSpriteRenderer.color = colorShift;
+            yield return new WaitForSeconds(duration / (2 * flashCount));
+            unitSpriteRenderer.color = originalColor;
+            yield return new WaitForSeconds(duration / (2 * flashCount));
+        }
+
+        damageReduction = 0f;
+        isColorShifted = false;
+    }
+    
+    public void DisplayDamageText(int damageTaken)
+    {
+        // Create a new instance of the damage text prefab
+        GameObject damageText = Instantiate(damageTextPrefab, transform.position + textPositionOffset, Quaternion.identity);
+        // Set the text to display the damage taken
+        if( damageText.GetComponent<TextMeshPro>().text!= null)
+        {
+            print("damge text is not null");
+            
+        }
+        else if(damageText.GetComponent<TextMeshPro>().text== null)
+        {
+            print("damage text is null");
+        }
+        damageText.GetComponent<TextMeshPro>().text = "-" + damageTaken.ToString();
     }
 }

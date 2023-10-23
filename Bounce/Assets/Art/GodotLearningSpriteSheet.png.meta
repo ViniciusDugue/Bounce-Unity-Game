@@ -146,7 +146,7 @@ TextureImporter:
         width: 58
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,7 +167,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -188,7 +188,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,6 +196,279 @@ TextureImporter:
       bones: []
       spriteID: cd2db002975a06143bf28d62d40c8020
       internalID: -571258441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 287
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b773f47878bb7a64a8fd767b63abd6c2
+      internalID: -431224804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 286
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a9da51616a4f204b964a1e36843081b
+      internalID: -2073212034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 314
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baea26d6b04be8646a79cb5b70404818
+      internalID: -708892211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 313
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911ae1de4453116408a90b60da6cb8a5
+      internalID: -97120252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 311
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa64e2297b493e84e9a977304179f273
+      internalID: 706540887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 283
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224068309de750f4e90aca8e7c0f2322
+      internalID: -1826086654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 256
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea4ff5c8a2970594fb7f03dedde81138
+      internalID: -1031800438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 256
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 580ce97b7a565ff4899b72abe2492658
+      internalID: 1731928464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 242
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5d807d3ddba2f34daf17bed9033b8ad
+      internalID: 1157372290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 289
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0e9485c50a964643a46fc927e17c51d
+      internalID: -1748559287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 229
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9799c284a8fa6a4c8c8eb27db56fc13
+      internalID: -127506301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 196
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b9554c8ab0a3943a1f5fc455c7dcdd
+      internalID: -1389301850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 229
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c74e815e8239f94499153e4afe2fcf2
+      internalID: 517277845
       vertices: []
       indices: 
       edges: []
@@ -221,8 +494,21 @@ TextureImporter:
     nameFileIdTable:
       GodotLearningSpriteSheet_0: -510326618
       GodotLearningSpriteSheet_1: -46069666
+      GodotLearningSpriteSheet_10: -1031800438
+      GodotLearningSpriteSheet_11: 1731928464
+      GodotLearningSpriteSheet_12: 1157372290
+      GodotLearningSpriteSheet_13: -1748559287
+      GodotLearningSpriteSheet_14: -127506301
+      GodotLearningSpriteSheet_15: -1389301850
+      GodotLearningSpriteSheet_16: 517277845
       GodotLearningSpriteSheet_2: 325970641
       GodotLearningSpriteSheet_3: -571258441
+      GodotLearningSpriteSheet_4: -431224804
+      GodotLearningSpriteSheet_5: -2073212034
+      GodotLearningSpriteSheet_6: -708892211
+      GodotLearningSpriteSheet_7: -97120252
+      GodotLearningSpriteSheet_8: 706540887
+      GodotLearningSpriteSheet_9: -1826086654
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -18,7 +18,8 @@ public class PlayerController : Unit
     public Player_input playerControls;
     private InputAction pause;
     private PauseMenu pauseMenu;
-    private Camera playerCamera;
+    public Camera playerCamera;
+    public PlayerCamera playerCameraScript;
     public bool isDead = false;
     private Vector3 mousePosition;
     private AbilityManager abilityManager;
@@ -50,7 +51,7 @@ public class PlayerController : Unit
         rb =  GetComponent<Rigidbody2D>();
         pauseMenu = FindObjectOfType<PauseMenu>();
         deathMenu = FindObjectOfType<DeathMenu>();
-        playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<Camera>();
+        // playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<Unit>();
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
@@ -103,9 +104,7 @@ public class PlayerController : Unit
             
             Vector3 mousePosition = playerCamera.ScreenToWorldPoint(Input.mousePosition) - new Vector3(0, 0, playerCamera.ScreenToWorldPoint(Input.mousePosition).z);
             Vector3 ballHoldDirection = (mousePosition - player.transform.position).normalized;
-            
             ball.transform.position = player.transform.position + ballHoldDirection *ballHoldDistance;
-            
         }
     }
 
@@ -144,8 +143,10 @@ public class PlayerController : Unit
 
     }
 
-    public void SpawnPlayerAtLocation(Vector3 spawnLocation)
+    public void SpawnPlayerAtSpawnBox()
     {
+        print("player spawned at spawnbox");
+        Vector3 spawnLocation =  GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
         player.transform.position= spawnLocation;
     }
 
@@ -278,7 +279,7 @@ public class PlayerController : Unit
         float currentLineDistance = 0.0f;
         int trajectoryBounces = 1;
 
-        if (distanceFromBall <= ballShootRange && !isDead)
+        if (distanceFromBall <= ballShootRange && !isDead  && playerCamera !=null)
         {
             Vector3 ballPosition = ball.transform.position;
             Vector3 mousePosition = playerCamera.ScreenToWorldPoint(Input.mousePosition) - new Vector3(0, 0, playerCamera.ScreenToWorldPoint(Input.mousePosition).z);
@@ -331,7 +332,7 @@ public class PlayerController : Unit
 
     public void TakeDamage(float damage)
     {
-        float damageTaken = Mathf.RoundToInt(damage * damageReduction);
+        float damageTaken = Mathf.RoundToInt(damage *  (1.0f- damageReduction));
         if(playerStats.health + playerStats.defense - damageTaken <=0)
         {
             playerStats.totalDamageTaken += (damageTaken - playerStats.defense)-playerStats.health ;
@@ -357,7 +358,8 @@ public class PlayerController : Unit
         }
         if (isColorShifted == false) 
         {
-        StartCoroutine(ShiftColor(redShift, 0.15f));
+            playerCameraScript.ShakeCamera(invulnerabilityShakeDuration);
+            StartCoroutine(Invulnerability(whiteShift, invulnerabilityDuration, invulnurabilityFlashCount));
         }
     }
 

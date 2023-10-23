@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
     // ball is enabled in level one in gamemanager and is spawned in next to the player in each level
     public float ballSize = 1.0f;
     private Rigidbody2D rb;
-    private GameObject ball;
+    public GameObject ball;
     public int ballDamage = 10;
     public PlayerCamera playerCameraScript;
     [SerializeField] private float damageSpeedMultiplier;
@@ -20,7 +20,6 @@ public class BallController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        ball = gameObject;
         rb.velocity = new Vector3(-1,-1,0).normalized * ballInitialSpeed;
         // dynamicCollider= transform.Find("ChildObject");
         // SetBallSize();
@@ -48,19 +47,21 @@ public class BallController : MonoBehaviour
         {
             print("tilemap collision!!");
             rb.velocity *= 0.9f;
+            playerCameraScript.ShakeCamera(ballShakeDuration);
         }
 
         if (collision.gameObject.CompareTag("Player"))
         {
             print("player collision");
             rb.velocity *= 1.0f;
+            playerCameraScript.ShakeCamera(ballShakeDuration);
         }
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
             print("enemy collision!");
             
-            rb.velocity *= 1.0f;
+            rb.velocity *= 1.1f;
             collision.gameObject.GetComponent<Basic_Enemy>().TakeDamage(GetBallDamage());
             playerCameraScript.ShakeCamera(ballShakeDuration);
             print("shake has occurred");
@@ -72,10 +73,10 @@ public class BallController : MonoBehaviour
         Vector3 preCollisionVelocity = rb.velocity;
         
 
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            print("player collision exited");
-        }
+        // if (collision.gameObject.CompareTag("Player"))
+        // {
+        //     print("player collision exited");
+        // }
 
     }
 
@@ -84,7 +85,7 @@ public class BallController : MonoBehaviour
     {
         int BallDamage = Mathf.RoundToInt(damageSpeedMultiplier * rb.velocity.magnitude);
         // return ballDamage * rb.velocity.normalized.magnitude;
-        print("BallDamage: " + BallDamage);
+        // print("BallDamage: " + BallDamage);
         return BallDamage;
     }
     // private void SetBallSize()

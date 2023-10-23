@@ -12,9 +12,11 @@ public class HealthBarUI : MonoBehaviour
     private void Start()
     {
         _healthSlider = GetComponent<Slider>();
+
     }
     void Update()
     {
+        SetMaxHealth(player.GetComponent<Unit>().maxHealth);
         SetHealth(player.GetComponent<Unit>().health);
     }
 
