@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
         playerUI.ShowPlayerUI();
         playerUI.UpdateLevelText();
         ballScript.ActivateBall();
-        ballScript.SpawnBallAtLocation(new Vector3(-14,8,0));
+        ballScript.SpawnBallAtLocation(new Vector3(-1-5,0));
         Debug.Log("Changed to Level_1 State");
         //waits until the Level_1 scene is  loaded and then subscribes to OnSceneLoaded to Spawn Enemies
         SceneManager.sceneLoaded += OnSceneLoaded;

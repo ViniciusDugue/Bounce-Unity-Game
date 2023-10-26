@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PlayerCamera : MonoBehaviour
 {
     private Transform player; 
     private GameObject playerCamera;
     public AnimationCurve shakeCurve;
     public float cameraLeadOffset;
+    public bool cameraMode;
+
+    private Vector3 storedCameraOffset;
+    public float cameraLerpPercentage = 0.75f;
     void Awake()
     {
         playerCamera = GameObject.FindWithTag("PlayerCamera");
@@ -36,15 +39,24 @@ public class PlayerCamera : MonoBehaviour
         {
             if(Time.timeScale==1f)
             {
-                Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-                Vector3 mousePosition = playerCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition) - new Vector3(0, 0, playerCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition).z);
-                Vector3 mouseDirection = (mousePosition - playerPosition).normalized;
+                if(cameraMode== false)
+                {
+                    Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+                    Vector3 mousePosition = playerCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition) - new Vector3(0, 0, playerCamera.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition).z);
+                    Vector3 mouseDirection = (mousePosition - playerPosition) * cameraLeadOffset;
 
-                //makes sure that during replays, the camera position doesnt go back on the z axis
-                transform.position = new Vector3(playerPosition.x, playerPosition.y, -5) + mouseDirection * cameraLeadOffset;
+                    storedCameraOffset = Vector3.Lerp(storedCameraOffset, mouseDirection, 1 - Mathf.Pow(cameraLerpPercentage, Time.deltaTime));
+
+                    //makes sure that during replays, the camera position doesnt go back on the z axis
+                    transform.position = new Vector3(playerPosition.x, playerPosition.y, -5) + storedCameraOffset;
+                }
+                else
+                {
+                    transform.position = new Vector3(0,0,-5);
+                }
+                
                 playerCamera.GetComponent<Camera>().orthographicSize = 8f;
             }
-            
         }
         else
         {
