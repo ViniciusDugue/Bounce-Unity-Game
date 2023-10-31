@@ -89,6 +89,15 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChargeBall"",
+                    ""type"": ""Button"",
+                    ""id"": ""f15d3af4-a331-40d1-8e6d-bf17218e748d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -342,6 +351,17 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""HoldBall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32aad9e6-8a79-43d2-a6b1-df0a44d16082"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChargeBall"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -936,6 +956,7 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
         m_Player_Ability3 = m_Player.FindAction("Ability3", throwIfNotFound: true);
         m_Player_ShootBall = m_Player.FindAction("ShootBall", throwIfNotFound: true);
         m_Player_HoldBall = m_Player.FindAction("HoldBall", throwIfNotFound: true);
+        m_Player_ChargeBall = m_Player.FindAction("ChargeBall", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1016,6 +1037,7 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability3;
     private readonly InputAction m_Player_ShootBall;
     private readonly InputAction m_Player_HoldBall;
+    private readonly InputAction m_Player_ChargeBall;
     public struct PlayerActions
     {
         private @Player_input m_Wrapper;
@@ -1027,6 +1049,7 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
         public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
         public InputAction @ShootBall => m_Wrapper.m_Player_ShootBall;
         public InputAction @HoldBall => m_Wrapper.m_Player_HoldBall;
+        public InputAction @ChargeBall => m_Wrapper.m_Player_ChargeBall;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1057,6 +1080,9 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
             @HoldBall.started += instance.OnHoldBall;
             @HoldBall.performed += instance.OnHoldBall;
             @HoldBall.canceled += instance.OnHoldBall;
+            @ChargeBall.started += instance.OnChargeBall;
+            @ChargeBall.performed += instance.OnChargeBall;
+            @ChargeBall.canceled += instance.OnChargeBall;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1082,6 +1108,9 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
             @HoldBall.started -= instance.OnHoldBall;
             @HoldBall.performed -= instance.OnHoldBall;
             @HoldBall.canceled -= instance.OnHoldBall;
+            @ChargeBall.started -= instance.OnChargeBall;
+            @ChargeBall.performed -= instance.OnChargeBall;
+            @ChargeBall.canceled -= instance.OnChargeBall;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1271,6 +1300,7 @@ public partial class @Player_input: IInputActionCollection2, IDisposable
         void OnAbility3(InputAction.CallbackContext context);
         void OnShootBall(InputAction.CallbackContext context);
         void OnHoldBall(InputAction.CallbackContext context);
+        void OnChargeBall(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

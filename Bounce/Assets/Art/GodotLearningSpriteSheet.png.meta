@@ -494,6 +494,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: GodotLearningSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 344
+        width: 11
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb952e51a3765c047a01b7e56daf5cc6
+      internalID: -1260491629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline:
     - - {x: -308.5, y: 200}
       - {x: -308.5, y: 208}
@@ -523,6 +544,8 @@ TextureImporter:
       GodotLearningSpriteSheet_15: -1389301850
       GodotLearningSpriteSheet_16: 517277845
       GodotLearningSpriteSheet_17: -2138104466
+      GodotLearningSpriteSheet_18: -1260491629
+      GodotLearningSpriteSheet_19: 721192988
       GodotLearningSpriteSheet_2: 325970641
       GodotLearningSpriteSheet_3: -571258441
       GodotLearningSpriteSheet_4: -431224804

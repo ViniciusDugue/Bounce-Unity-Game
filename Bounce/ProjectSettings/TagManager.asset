@@ -23,7 +23,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - UI2
   - Water
   - UI
   - 
@@ -64,6 +64,12 @@ TagManager:
     locked: 0
   - name: Debuffs
     uniqueID: 2099559013
+    locked: 0
+  - name: UI3(larger the number the further back)
+    uniqueID: 3934013915
+    locked: 0
+  - name: UI2
+    uniqueID: 2047743745
     locked: 0
   - name: UI
     uniqueID: 1636351311
